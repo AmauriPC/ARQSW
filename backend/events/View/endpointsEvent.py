@@ -9,7 +9,7 @@ from ..containers import Container
 
 router = APIRouter()
 
-@router.get("/twitter",status_code=status.HTTP_201_CREATED)
+@router.post("/twitter")
 @inject
 def new_twitter_event():
     return "añadir evento nuevo twitter"
