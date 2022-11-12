@@ -6,7 +6,7 @@ WORKDIR /app
 # Copy app files
 COPY . .
 # ==== BUILD =====
-RUN npm install
+RUN npm install -save react-router-dom or npm i react-router-dom
 # Install dependencies (npm ci makes sure the exact versions in the lockfile gets installed)
 RUN npm ci 
 # Build the app
