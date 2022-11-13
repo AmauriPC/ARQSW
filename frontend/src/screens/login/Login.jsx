@@ -11,14 +11,20 @@ export function Login() {
         <div className="login__container">
           <h1>Sign in</h1>
           <form>
-            <h5>E-mail</h5>
+            <label >User <br />
             <input type="text" />
+            </label>
+            
             <h5>Password</h5>
             <input type="password" />
-            <button onClick={() => navigate("/dashboard")} type="submit" className="login_btn" >
+           
+          </form>
+          <div>
+          <button onClick={() => navigate("/dashboard")} type="submit" className="login_btn" >
               Sign In
             </button>
-          </form>
+          </div>
+          
           </div>
       </div>   
     </div> 
