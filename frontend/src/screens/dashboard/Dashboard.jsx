@@ -8,87 +8,71 @@ import Button from "react-bootstrap/esm/Button";
 import Table from 'react-bootstrap/Table';
 import "./dashboard.css";
 import 'bootstrap/dist/css/bootstrap.css';
- 
+import {AgGridReact} from "ag-grid-react";
+import 'ag-grid-community/styles/ag-grid.css';
+import 'ag-grid-community/styles/ag-theme-alpine.css';
 
 export function Dashboard() {
 
 
+
+  const [columnDefs] = useState([
+    {field: "IdEvent", sortable: true, filter: true},
+    {field: "App", sortable: true, filter: true},
+    {field: "EventType", sortable: true, filter: true},
+    {field: "Content", sortable: true, filter: true},
+    {field: "Date", sortable: true, filter: true},
+    {field: "Time", sortable: true, filter: true},
+    {field: "User", sortable: true, filter: true}
+
+  ]);
+
+  const [rowData] = useState([
+    {IdEvent: "1", App: "BLOG", EventType: "Login", Content: "Login", Date: "2021-06-01", Time: "10:00:00", User: "User1"},
+    {IdEvent: "2", App: "Instagram", EventType: "Logout", Content: "Logout", Date: "2021-06-01", Time: "10:00:00", User: "User2"},
+    {IdEvent: "3", App: "Twitter", EventType: "Post", Content: "image:True text: true ", Date: "2021-06-01", Time: "10:00:00", User: "User"},
+    {IdEvent: "4", App: "Instagram", EventType: "Logout", Content: "Logout", Date: "2021-06-01", Time: "10:00:00", User: "User2" },
+    {IdEvent: "5", App: "Twitter", EventType: "Follow", Content: "Follow", Date: "2021-06-01", Time: "10:00:00", User: "User"}
+  ]);
+
   function table() {
     return (
-      <div>
-   <Table striped bordered hover size="sm">
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Username</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>1</td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td colSpan={2}>Larry the Bird</td>
-            <td>@twitter</td>
-          </tr>
-        </tbody>
-      </Table>
+      <div className="ag-theme-alpine" style={{height: 600}}>
+      <AgGridReact
+        rowData = {rowData}
+        columnDefs = {columnDefs}
+        />
+        <footer>  
+          <h1></h1>
+        </footer>
       </div>
-     
-    );
-  }
-  
-  const [value, setValue] = useState('Seleccione una App');
-  const handleSelect = (e) => {
-    console.log(e);
-    setValue(e)
-  }
+    )
+  };
+
 
   return (
-    <div className="full_container">
+    <div>
       <div className="events_filters">
+          <header>
+            <h1>Dashboard de eventos</h1>
 
+          </header>
         <div style={{ display: "flex", gap: "1rem" }}>
-          <Dropdown onSelect={handleSelect}>
-            <DropdownToggle>
-              {value}
-            </DropdownToggle>
-            <DropdownMenu>
-              <Dropdown.Item eventKey="Seleccione una App"> Seleccione una App</Dropdown.Item>
-              <Dropdown.Divider />
-              <Dropdown.Item eventKey="Twitter"> Twitter</Dropdown.Item>
-              <Dropdown.Item eventKey="Instagram">Instagram</Dropdown.Item>
-              <Dropdown.Item eventKey="Blog">Blog</Dropdown.Item>
-            </DropdownMenu>
-
-          </Dropdown>
-
+      
           <Button id="search-events"
-            variant="outline-secondary"
+            variant="outline-primary"
             onClick={table}
 
           >Buscar eventos
 
           </Button>
-
+            
 
         </div>
-        
     
       </div>
       <br />
+
       
 
       
