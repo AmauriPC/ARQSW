@@ -1,33 +1,38 @@
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+
+import { useNavigate } from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.css';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
 import "./Login.css";
+
 
 export function Login() {
   const navigate = useNavigate();
   return (
-    <div>
+    <div style={{ textAlign: "center", alignItems:"center"}}>
+      <h1>Sign In</h1>
       <div className="login">
-        <div className="login__container">
-          <h1>Sign in</h1>
-          <form>
-            <label >User <br />
-            <input type="text" />
-            </label>
-            
-            <h5>Password</h5>
-            <input type="password" />
-           
-          </form>
+        <Form>
+          <Form.Group className="mb-3" controlId="email">
+            <label>Email address</label>
+            <Form.Control type="email" placeholder="Enter email" />
+          </Form.Group>
+
+          <Form.Group className="mb-3" controlId="password">
+            <label>Password</label>
+            <Form.Control type="password" placeholder="Password" />
+          </Form.Group>
+
           <div>
-          <button onClick={() => navigate("/dashboard")} type="submit" className="login_btn" >
+            <Button variant="primary" onClick={() => navigate("/dashboard")} type="submit" className="login_btn" >
               Sign In
-            </button>
+            </Button>
           </div>
-          
-          </div>
-      </div>   
-    </div> 
+        </Form>
+      </div>
+    </div>
+
+
   );
 }
 export default Login;
