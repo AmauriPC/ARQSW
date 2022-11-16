@@ -3,6 +3,7 @@
 from dependency_injector import containers, providers
 
 from .database import Database
+from .Model.eventRepositorie import EventRepositorie
 
 class Container(containers.DeclarativeContainer):
 
@@ -11,3 +12,8 @@ class Container(containers.DeclarativeContainer):
     config = providers.Configuration(yaml_files=["config.yml"])
 
     db = providers.Singleton(Database, db_url=config.db.url)
+
+    eventRepositorie = providers.Factory(
+        EventRepositorie,
+        session_factory=db.provided.session,
+    )
