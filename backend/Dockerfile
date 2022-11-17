@@ -11,5 +11,5 @@ RUN export PYTHONPATH="$PYTHONPATH:/code"
 
 RUN pip install --upgrade pip \
  && pip install -r requirements.txt
-
+EXPOSE 8000
 CMD uvicorn events.application:app --host ${HOST} --port ${PORT}
