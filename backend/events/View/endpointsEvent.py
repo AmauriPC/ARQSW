@@ -7,8 +7,27 @@ from dependency_injector.wiring import inject, Provide
 from ..containers import Container
 from ..Model.eventRepositorie import EventRepositorie   
 from ..Data_Transfer_Object.input import EventDTO
+from ..Data_Transfer_Object.loginInput import loginInput
 
 router = APIRouter()
+
+
+@router.get("/login")
+@inject
+def get_user_login(
+    login : loginInput,
+    eventRepositorie : EventRepositorie = Depends(Provide[Container.eventRepositorie])
+):
+    return eventRepositorie.login(login)
+
+
+@router.post("/loginPost")
+@inject
+def post_new_user(
+    login : loginInput,
+    eventRepositorie : EventRepositorie = Depends(Provide[Container.eventRepositorie])
+):
+    return eventRepositorie.addNewUser(login)
 
 @router.post("/twitter")
 @inject
