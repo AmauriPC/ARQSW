@@ -17,7 +17,7 @@ Una vez ahí se debe correr el siguiente comando
 
 Para como segundo se debe correr el siguiente comando
 
-# docker-compose up#
+# docker-compose up #
 
 Y finalmente para poder acceder a la página de inicio se debe colocar el enlace 
 # http://localhost:8080
