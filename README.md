@@ -1,7 +1,7 @@
 # ARQSW
 Proyect for ARQ SW event dashboard 
-!! Profesor la parte de login aun no funciona en su totalidad, funciona la parte para registrar un correo y contraseña en dado caso que no exista en la base de datos
-!! Pero está en proceso todavia la parte para que pueda funcionar la autenticación del login
+# !! Profesor la parte de login aun no funciona en su totalidad, funciona la parte para registrar un correo y contraseña en dado caso que no exista en la base de datos
+# !! Pero está en proceso todavia la parte para que pueda funcionar la autenticación del login
 
 # Primer paso
 Se debe descargar el zip y extraerlo en alguna carpeta en cualquier parte del equipo
