@@ -36,7 +36,7 @@ def new_twitter_event(
     eventRepositorie : EventRepositorie = Depends(Provide[Container.eventRepositorie])
 
 ):
-    return eventRepositorie.add(event_input)
+    return eventRepositorie.add(event_input,"twitter")
 
 @router.post("/blog")
 @inject

@@ -1,4 +1,4 @@
-"""Models module."""
+
 
 from sqlalchemy import Column, String, Boolean, Integer
 

@@ -50,10 +50,10 @@ class EventRepositorie:
         
         return stringg
 
-    def add(self, eventt:EventDTO) -> Event: 
+    def add(self, eventt:EventDTO,appNamee) -> Event: 
         with self.session_factory() as session:
             event = Event(
-                        appName= eventt.appName,
+                        appName= appNamee,
                         eventId= eventt.eventId,
                         eventName= eventt.eventName,
                         userId= eventt.userId,
@@ -67,7 +67,6 @@ class EventRepositorie:
             
     def get_all_events(self) -> Iterator[EventOutput]:
         with self.session_factory() as session:
-            print("aaaaaaaaaaaaaaaaa")
             output = []
             event_out = session.query(Event).all()
 
@@ -78,4 +77,4 @@ class EventRepositorie:
                         userId= event.userId,
                         eventDescription= event.eventDescription,)
                 output.append(event_data)
-            return output #select * from users
+            return output 
