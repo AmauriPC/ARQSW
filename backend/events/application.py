@@ -8,9 +8,7 @@ from .View import endpointsEvent
 
 def create_app() -> FastAPI:
     container = Container()
-
-
-
+    
     app = FastAPI()
     app.container = container
 

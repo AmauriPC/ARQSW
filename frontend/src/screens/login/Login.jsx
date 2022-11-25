@@ -12,6 +12,21 @@ export function Login() {
   const [email, setemail] = useState('');
   const [password, setPasword] = useState('');
 
+  function login (){
+    return fetch('/api/login', {
+      method: "POST",
+      body: JSON.stringify({email : email, password: password}),
+      headers: {"Content-type": "application/json"}
+    })
+    .then(response => response.json())
+    .then(result => {
+      console.log(result) 
+      return result})
+    .catch(error => console.log(error))
+  }
+
+
+
   return (
     <div style={{ textAlign: "center", alignItems:"center"}}>
       <h1>Sign In</h1>
@@ -34,13 +49,27 @@ export function Login() {
           </Form.Group>
 
           <div>
-            <Button variant="primary" onClick={() => navigate("/dashboard")} type="submit" className="login_btn" >
+            <Button variant="primary" type="submit" className="login_btn" onClick = {() => 
+              fetch('/api/login', {
+                method: "POST",
+                body: JSON.stringify({email : email, password: password}),
+                headers: {"Content-type": "application/json"}
+              })
+              .then(response => response.json())
+              .then(result => {
+                if(result == true){
+                  navigate("/dashboard");
+                }else{
+                  console.log("Password or Email Incorrect")
+                }
+                return result})
+              .catch(error => console.log(error))}>
               Sign In
             </Button>
             <Button  variant="secondary" onClick = {() => 
               fetch('/api/loginPost', {
                 method: "POST",
-                body: JSON.stringify({email : email, passowrd: password}),
+                body: JSON.stringify({email : email, password: password}),
                 headers: {"Content-type": "application/json"}
               })
               .then(response => response.json())

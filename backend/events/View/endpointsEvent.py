@@ -12,7 +12,7 @@ from ..Data_Transfer_Object.loginInput import loginInput
 router = APIRouter()
 
 
-@router.get("/login")
+@router.post("/login")
 @inject
 def get_user_login(
     login : loginInput,
